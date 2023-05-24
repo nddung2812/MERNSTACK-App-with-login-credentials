@@ -3,9 +3,10 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import FormContainer from '../components/FormContainer'
-import { useLoginMutation } from '../../slices/usersApiSlice'
-import { setCredentials } from '../../slices/authSlice'
+import { useLoginMutation } from '../slices/usersApiSlice'
+import { setCredentials } from '../slices/authSlice'
 import { toast } from 'react-toastify'
+import Loader from '../components/Loader'
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('')
@@ -19,7 +20,7 @@ const LoginScreen = () => {
 
     useEffect(() => {
         if(userInfo) {
-            navigate('/login')
+            navigate('/')
         }
     },[userInfo, navigate])
 
@@ -58,13 +59,15 @@ const LoginScreen = () => {
                 ></Form.Control>
             </Form.Group>
 
+            {isLoading && <Loader></Loader>}
+
             <Button type='submit' variant='primary' className='mt-3'>
                 Sign in
             </Button>
 
             <Row className='py-3'>
                 <Col>
-                    New Customer? <Link to='/register'>Register</Link>
+                    New Customer? <Link to='/register'>Sign Up</Link>
                 </Col>
             </Row>
         </Form>

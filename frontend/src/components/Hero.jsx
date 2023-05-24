@@ -20,7 +20,7 @@ const Hero = () => {
             </LinkContainer>
             <LinkContainer to='/register'>
                 <Button variant='secondary'>
-                Register
+                Sign Up
                 </Button>
             </LinkContainer>
           </div>
